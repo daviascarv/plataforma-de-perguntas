@@ -4,7 +4,7 @@ app.set('view engine','ejs')    //avisando ao express p usar ejs como view engin
 
 //rota principal
 app.get("/", (req, res)=>{
-    res.render("html")
+    res.render("index")
 })
 
 //second routes
