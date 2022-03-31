@@ -3,7 +3,9 @@ const app = express()
 app.set('view engine','ejs')    //avisando ao express p usar ejs como view engine(renderizador html)
 
 //rota principal
-app.get("/", (req, res)=> res.render("html"))
+app.get("/", (req, res)=>{
+    res.render("html")
+})
 
 //second routes
 app.get("/blog", (req, res)=>{
