@@ -8,5 +8,14 @@
 </head>
 <body>
     <h1>Lista de perguntas</h1>
+    <h2>Exibindo valor de variáveis do nodejs (ejs)</h2>
+    <%= name %> 
+    <%= linguagem %>
+    <h2>Exibindo lista de produtos</h2>
+    <% produtos.forEach((produtos)=>{ %>
+        <%= produtos.nome %>
+        <%= produtos.preço %>
+        <% }) %>
+    
 </body>
 </html>
