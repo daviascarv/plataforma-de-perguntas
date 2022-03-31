@@ -4,7 +4,19 @@ app.set('view engine','ejs')    //avisando ao express p usar ejs como view engin
 
 //rota principal
 app.get("/", (req, res)=>{
-    res.render("index")
+    let name = "Davi"
+    let linguagem = "JavaScript"
+    let produtos = [
+        {nome: "Iphone", preço: 1500},
+        {nome: "Macbook", preço: 7000},
+        {nome: "Ipad", preço: 5000}
+    ]
+    res.render("index",{
+        name: name,
+        linguagem: linguagem,
+        empresa: "Tecon",
+        produtos: produtos
+    })
 })
 
 //second routes
