@@ -1,6 +1,11 @@
 const express = require("express")
 const app = express()
-app.set('view engine','ejs')    //avisando ao express p usar ejs como view engine(renderizador html)
+
+//avisando ao express p usar ejs como view engine(renderizador html)
+app.set('view engine','ejs')
+
+//avisando ao express que quero usar arquivos estáticos
+app.use(express.static('public'))
 
 //rota principal
 app.get("/", (req, res)=>{
@@ -11,7 +16,7 @@ app.get("/", (req, res)=>{
         {nome: "Macbook", preço: 7000},
         {nome: "Ipad", preço: 5000}
     ]
-    res.render("index",{
+    res.render("home",{
         name: name,
         linguagem: linguagem,
         empresa: "Tecon",
@@ -20,9 +25,9 @@ app.get("/", (req, res)=>{
 })
 
 //second routes
-app.get("/blog", (req, res)=>{
+app.get("/perguntar", (req, res)=>{
     let canal = req.query["canal"]  //query params -> busca o parametro opcional colocado na url do navegador
-    res.send(canal)
+    res.render("index")
 })
 
 app.get("/youtube/:nome/:empresa", (req, res)=>{
