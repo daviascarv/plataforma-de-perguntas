@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require("body-parser")
 const app = express()
 
 //avisando ao express p usar ejs como view engine(renderizador html)
@@ -6,6 +7,12 @@ app.set('view engine','ejs')
 
 //avisando ao express que quero usar arquivos estáticos
 app.use(express.static('public'))
+
+//Traduzindo o formulario em html para javascript
+app.use(bodyParser.urlencoded({extended: false}))
+
+//Permite ler dados de formulario via json
+app.use(bodyParser.json())
 
 //rota principal
 app.get("/", (req, res)=>{
