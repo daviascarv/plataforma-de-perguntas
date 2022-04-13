@@ -1,8 +1,11 @@
+//Importando o express
 const express = require("express")
+//Importando o body parser
 const bodyParser = require("body-parser")
+//Atribuindo uma constante app à chamada do express -> express()
 const app = express()
 
-//avisando ao express p usar ejs como view engine(renderizador html)
+//avisando ao express para usar ejs como view engine(renderizador html)
 app.set('view engine','ejs')
 
 //avisando ao express que quero usar arquivos estáticos
@@ -38,7 +41,9 @@ app.get("/perguntar", (req, res)=>{
 })
 
 app.post("/salvarpergunta", (req, res)=>{
-    res.send("Formulario Recebido!")
+    var x = req.body.descricao
+    let y = req.body.titulo
+    res.send("Tudo certo " + x + "e" + y)
 })
 
 
