@@ -30,10 +30,8 @@ app.get("/perguntar", (req, res)=>{
     res.render("index")
 })
 
-app.get("/youtube/:nome/:empresa", (req, res)=>{
-    let empresa = req.params.empresa
-    let nome = req.params.nome
-    res.send("Olá" +nome+ " que trabalha na" +empresa)
+app.post("/salvarpergunta", (req, res)=>{
+    res.send("Formulario Recebido!")
 })
 
 
