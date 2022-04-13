@@ -19,31 +19,18 @@ app.use(bodyParser.json())
 
 //rota principal
 app.get("/", (req, res)=>{
-    let name = "Davi"
-    let linguagem = "JavaScript"
-    let produtos = [
-        {nome: "Iphone", preço: 1500},
-        {nome: "Macbook", preço: 7000},
-        {nome: "Ipad", preço: 5000}
-    ]
-    res.render("home",{
-        name: name,
-        linguagem: linguagem,
-        empresa: "Tecon",
-        produtos: produtos
-    })
+    res.render("home")
 })
 
 //second routes
 app.get("/perguntar", (req, res)=>{
-    let canal = req.query["canal"]  //query params -> busca o parametro opcional colocado na url do navegador
     res.render("index")
 })
 
 app.post("/salvarpergunta", (req, res)=>{
-    var x = req.body.descricao
-    let y = req.body.titulo
-    res.send("Tudo certo " + x + "e" + y)
+    let descricao = req.body.descricao
+    let titulo = req.body.titulo
+    res.send("Tudo certo " + titulo + "e" + descricao)
 })
 
 
