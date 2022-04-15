@@ -5,7 +5,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 
 //Importando model do sequelize
-const perguntaModel1 = require("./database/Pergunta")
+const Pergunta = require("./database/Pergunta")
 
 //Atribuindo uma constante app à chamada do express -> express()
 const app = express()
@@ -28,10 +28,10 @@ app.use(bodyParser.json())
 //Estabelecendo a conecção com o bd
 connection
     .authenticate()
-    .then(() => {
+    .then(() => {   //Quando a autenticacao for feita, executa o then
         console.log("Conecção feita com o banco de dados!")
     })
-    .catch((msgErro) => {
+    .catch((msgErro) => {   //Se der erro na autenticacao executa o catch
         console.log("Erro")
     })
 
@@ -39,7 +39,12 @@ connection
     
 //rota principal
 app.get("/", (req, res)=>{
-    res.render("home")
+    Pergunta.findAll({raw: true}).then(perguntas =>{    //Procura todos os dados de Pergunta ({retornar apenas dados úteis})
+    //Quando acontecer a procura, salva a variável perguntas e renderiza para o home com um json chamando a variável pergunta
+        res.render("home",{
+            perguntas: perguntas
+        })
+    })
 })
 
 //second routes
@@ -50,7 +55,12 @@ app.get("/perguntar", (req, res)=>{
 app.post("/salvarpergunta", (req, res)=>{
     let descricao = req.body.descricao
     let titulo = req.body.titulo
-    res.send("Tudo certo " + titulo + "e" + descricao)
+    Pergunta.create({
+        titulo: titulo,
+        descricao: descricao
+    }).then(()=>{
+        res.redirect("/")
+    })
 })
 
 
