@@ -1,9 +1,17 @@
 //Importando o express
 const express = require("express")
+
 //Importando o body parser
 const bodyParser = require("body-parser")
+
+//Importando model do sequelize
+const perguntaModel1 = require("./database/Pergunta")
+
 //Atribuindo uma constante app à chamada do express -> express()
 const app = express()
+
+//Carregando conecção com o bd
+const connection = require('./database/database')
 
 //avisando ao express para usar ejs como view engine(renderizador html)
 app.set('view engine','ejs')
@@ -17,6 +25,18 @@ app.use(bodyParser.urlencoded({extended: false}))
 //Permite ler dados de formulario via json
 app.use(bodyParser.json())
 
+//Estabelecendo a conecção com o bd
+connection
+    .authenticate()
+    .then(() => {
+        console.log("Conecção feita com o banco de dados!")
+    })
+    .catch((msgErro) => {
+        console.log("Erro")
+    })
+
+
+    
 //rota principal
 app.get("/", (req, res)=>{
     res.render("home")
