@@ -39,13 +39,16 @@ connection
     
 //rota principal
 app.get("/", (req, res)=>{
-    Pergunta.findAll({raw: true}).then(perguntas =>{    //Procura todos os dados de Pergunta ({retornar apenas dados úteis})
-    //Quando acontecer a procura, salva a variável perguntas e renderiza para o home com um json chamando a variável pergunta
+    Pergunta.findAll({ raw: true, oder:[
+        ['id','ASC']
+    ]}).then(perguntas => {
         res.render("home",{
             perguntas: perguntas
         })
+
     })
 })
+
 
 //second routes
 app.get("/perguntar", (req, res)=>{
@@ -63,6 +66,19 @@ app.post("/salvarpergunta", (req, res)=>{
     })
 })
 
+//Third rote
+app.get("/pergunta/:id", (req, res)=>{
+    let id = req.params.id
+        Pergunta.findOne({
+            where: {id: id}
+        }).then(pergunta => {
+            if(pergunta != undefined){
+                res.render("pergunta")
+            }else{
+                res.redirect("/")
+            }
+        })
+    })
 
 
 
