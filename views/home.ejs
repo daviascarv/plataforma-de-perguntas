@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia do Programador</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylehome.css">
+    <link rel="stylesheet" href="/css/stylehome.css">
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark">
@@ -15,8 +15,24 @@
         </a>
     </nav>
     <div class="container" id="corpo-home">
-        <h2> Olá, Bem vindo ao site de perguntas para programadores</h2>
-        <h3><a href="/perguntar">Realizar pergunta</a></h3>
+                <h2> Olá, Bem vindo ao site de perguntas para programadores</h2>
+                <button class="btn btn bg-success">
+                <a href="/perguntar"> Perguntar </a>
+                </button>
+                <hr>
+                <br>
+                <h3>Exibição das perguntas: </h3>
+                <% perguntas.forEach(pergunta => { %>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3><%= pergunta.titulo %></h3>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn bg-success">Responder</button>
+                        </div>
+                    </div>
+            <% }) %>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
