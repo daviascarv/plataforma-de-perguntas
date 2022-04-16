@@ -50,11 +50,12 @@ app.get("/", (req, res)=>{
 })
 
 
-//second routes
+//Rota principal
 app.get("/perguntar", (req, res)=>{
     res.render("index")
 })
 
+//Rota para salvar formulario
 app.post("/salvarpergunta", (req, res)=>{
     let descricao = req.body.descricao
     let titulo = req.body.titulo
@@ -66,7 +67,7 @@ app.post("/salvarpergunta", (req, res)=>{
     })
 })
 
-//Third rote
+//Rota para buscar pergunta
 app.get("/pergunta/:id", (req, res)=>{
     let id = req.params.id
         Pergunta.findOne({
