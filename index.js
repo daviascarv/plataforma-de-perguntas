@@ -37,7 +37,7 @@ connection
 
 
     
-//rota principal
+//Rota principal
 app.get("/", (req, res)=>{
     Pergunta.findAll({ raw: true, oder:[
         ['id','ASC']
@@ -50,7 +50,7 @@ app.get("/", (req, res)=>{
 })
 
 
-//Rota principal
+//Rota para fazer a pergunta
 app.get("/perguntar", (req, res)=>{
     res.render("index")
 })
