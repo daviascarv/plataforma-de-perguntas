@@ -17,8 +17,17 @@
     </nav>
 
     <div class="container">
-        <h1>Hello World</h1>
-        </div>
+        <hr>
+        <h1><%=pergunta.titulo %></h1>
+        <p><%=pergunta.descricao %></p>
+        <hr>
+        <form method="POST" action="/responder">
+            <h3>Responda</h3>
+            <textarea name="corpo" class="form-control" placeholder="Digite sua resposta"></textarea>
+            <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+            <button class="btn btn-dark">Responder</button>
+        </form>
+    </div>
         
         
         
