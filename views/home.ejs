@@ -16,9 +16,7 @@
     </nav>
     <div class="container" id="corpo-home">
                 <h2> Olá, Bem vindo ao site de perguntas para programadores</h2>
-                <button class="btn btn bg-success">
-                <a href="/perguntar"> Perguntar </a>
-                </button>
+                <a class="btn btn-success" href="/perguntar"> Perguntar </a>
                 <hr>
                 <br>
                 <h3>Exibição das perguntas: </h3>
@@ -29,7 +27,7 @@
                             <h3><%= pergunta.titulo %></h3>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn bg-success">Responder</button>
+                            <a href="/pergunta/<%= pergunta.id %>"><button class="btn btn bg-success">Responder</button></a>
                         </div>
                     </div>
             <% }) %>
