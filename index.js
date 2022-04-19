@@ -6,6 +6,7 @@ const bodyParser = require("body-parser")
 
 //Importando model do sequelize
 const Pergunta = require("./database/Pergunta")
+const Resposta = require("./database/Resposta")
 
 //Atribuindo uma constante app à chamada do express -> express()
 const app = express()
@@ -74,13 +75,26 @@ app.get("/pergunta/:id", (req, res)=>{
             where: {id: id}
         }).then(pergunta => {
             if(pergunta != undefined){
-                res.render("pergunta")
+                res.render("pergunta",{
+                    pergunta: pergunta
+                })
             }else{
                 res.redirect("/")
-            }
-        })
+        }
     })
+})
 
+
+app.post("/responder", (req, res) => {
+let corpo = req.body.params
+let perguntaId = req.body.params
+Resposta.create({
+    corpo: corpo,
+    perguntaId: perguntaID
+    }).then(()=> {
+        res.redirect("/pergunta/"+perguntaId)
+    })
+})
 
 
 
